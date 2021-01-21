@@ -21,9 +21,9 @@
 ###### Clone this repository using the link above then go to the root directory of the project and run the following commands -
 ###
 
-### Dependencies
+#### Dependencies
 
-This app is currently extended with the following dependencies. Instructions on how to use them in your own application are linked below.
+###### This app is currently extended with the following dependencies. Instructions on how to use them in your own application are linked below.
 
 | Dependencies | READ MORE |
 | ------ | ------ |
