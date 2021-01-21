@@ -33,18 +33,9 @@
 | http | [README](https://pub.dev/packages/http) |
 | peanut | [README](https://pub.dev/packages/peanut) |
 
-#### Live Demo
 
-<!-- blank line -->
-<figure class="video_container">
-  <iframe src="https://flutter-booksearch.web.app/#/"  height="650"  width="350" frameborder="0" allowfullscreen="true"> </iframe>
-</figure>
-<!-- blank line -->
-
-
-####
-License
-----
+#### License
+-----------
 
 MIT
 
