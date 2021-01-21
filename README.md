@@ -1,4 +1,4 @@
-[![N|Solid](https://dashboard.appbase.io/static/images/appbase.svg)](https://nodesource.com/products/nsolid)
+![N|Solid](https://dashboard.appbase.io/static/images/appbase.svg)
 
 ## Flutter Booksearch App
 ###### This is a demo flutter application showing some of the widgets in the flutter-searchbox, searchbase packages to connect and retrive information from an appbase.io cluster.
@@ -32,7 +32,17 @@
 | url_launcher | [README](https://pub.dev/packages/url_launcher) |
 | http | [README](https://pub.dev/packages/http) |
 | peanut | [README](https://pub.dev/packages/peanut) |
-###
+
+#### Live Demo
+
+<!-- blank line -->
+<figure class="video_container">
+  <iframe src="https://flutter-booksearch.web.app/#/"  height="650"  width="350" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
+<!-- blank line -->
+
+
+####
 License
 ----
 
