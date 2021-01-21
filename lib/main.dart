@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:searchbase/searchbase.dart';
 import 'package:flutter_searchbox/flutter_searchbox.dart';
 import 'results.dart';
-import 'package:flutter_config/flutter_config.dart';
 import 'author_filter.dart';
 import 'publication_year_filter.dart';
 import 'ratings_filter.dart';
