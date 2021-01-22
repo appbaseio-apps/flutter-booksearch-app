@@ -20,18 +20,11 @@ class _SelectedFiltersState extends State<SelectedFilters> {
     super.initState();
   }
 
-  // @override
-  // void didUpdateWidget(SelectedFilters oldWidget) {
-  //   super.didUpdateWidget(oldWidget);
-  //   if (identical(oldWidget.activeWidgets, widget.activeWidgets)) {
-  //     print('SelectedFilters changed');
-  //   }
-  // }
-
   void setSelectedFilters() {
     selectedFilters = [];
     activeWidgets = SearchBaseProvider.of(context).getActiveWidgets();
-    if (activeWidgets['author-filter'] != null) {
+    if (activeWidgets['author-filter'] != null &&
+        activeWidgets['author-filter'].componentQuery['value'] != null) {
       activeWidgets['author-filter'].componentQuery['value'].forEach((element) {
         setState(() {
           selectedFilters.add({
