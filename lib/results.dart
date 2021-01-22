@@ -179,49 +179,57 @@ class ResultsWidget extends StatelessWidget {
                                               isThreeLine: true,
                                             ),
                                           ),
-                                          Row(
-                                            children: [
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.fromLTRB(
-                                                        25, 0, 0, 0),
-                                                child: IconTheme(
-                                                  data: Theme.of(context)
-                                                      .iconTheme,
-                                                  child: StarDisplay(
-                                                      value: searchWidget
-                                                              .results
-                                                              .data[index][
-                                                          "average_rating_rounded"]),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.fromLTRB(
-                                                        10, 5, 0, 0),
-                                                child: Text(
-                                                  '(${searchWidget.results.data[index]["average_rating"]} avg)',
-                                                  style: TextStyle(
-                                                    fontSize: 12.0,
+                                          SizedBox(
+                                            height: 20,
+                                            width: 280,
+                                            child: Row(
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          10, 0, 0, 0),
+                                                  child: IconTheme(
+                                                    data: Theme.of(context)
+                                                        .iconTheme,
+                                                    child: StarDisplay(
+                                                        value: searchWidget
+                                                                .results
+                                                                .data[index][
+                                                            "average_rating_rounded"]),
                                                   ),
                                                 ),
-                                              ),
-                                            ],
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          10, 5, 0, 0),
+                                                  child: Text(
+                                                    '(${searchWidget.results.data[index]["average_rating"]} avg)',
+                                                    style: TextStyle(
+                                                      fontSize: 12.0,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                          Row(
-                                            children: [
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.fromLTRB(
-                                                        27, 10, 0, 0),
-                                                child: Text(
-                                                  'Pub: ${searchWidget.results.data[index]["original_publication_year"]}',
-                                                  style: TextStyle(
-                                                    fontSize: 12.0,
+                                          SizedBox(
+                                            height: 30,
+                                            width: 280,
+                                            child: Row(
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          15, 10, 0, 0),
+                                                  child: Text(
+                                                    'Pub: ${searchWidget.results.data[index]["original_publication_year"]}',
+                                                    style: TextStyle(
+                                                      fontSize: 12.0,
+                                                    ),
                                                   ),
-                                                ),
-                                              )
-                                            ],
+                                                )
+                                              ],
+                                            ),
                                           )
                                         ],
                                       ),
