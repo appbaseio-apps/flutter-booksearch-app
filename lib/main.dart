@@ -9,18 +9,11 @@ import 'drawer_buttons.dart';
 import 'custom_theme.dart';
 
 void main() {
-  // WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
-  // await FlutterConfig.loadEnvVariables();
-
   runApp(FlutterSearchBoxApp());
 }
 
 class FlutterSearchBoxApp extends StatelessWidget {
   final SearchBase searchbase;
-  // final index = FlutterConfig.get("INDEX");
-  // final credentials = FlutterConfig.get("CREDENTIALS");
-  // final url = FlutterConfig.get("URL");
-
   final index = 'good-books-ds';
   final credentials = 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61';
   final url = 'https://arc-cluster-appbase-demo-6pjy6z.searchbase.io';

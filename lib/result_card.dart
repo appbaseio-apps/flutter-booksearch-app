@@ -59,7 +59,10 @@ class ResultCard extends StatelessWidget {
                               child: RichText(
                                 text: TextSpan(
                                   text: data['original_title'],
-                                  style: Theme.of(context).textTheme.subtitle1,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline2
+                                      .copyWith(fontSize: 25),
                                 ),
                               ),
                             ),

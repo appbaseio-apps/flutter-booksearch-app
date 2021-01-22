@@ -13,6 +13,11 @@ class CustomTheme {
         selectedRowColor: Colors.black12.withOpacity(0.025),
         accentColor: Colors.blue.withOpacity(0.5),
         splashColor: Colors.redAccent[100],
+        inputDecorationTheme: InputDecorationTheme(
+          hintStyle: TextStyle(
+            color: Colors.white60,
+          ),
+        ),
         accentIconTheme: IconThemeData(
           size: 25.0,
           color: Colors.white,
@@ -57,12 +62,12 @@ class CustomTheme {
             fontSize: 15,
           ),
           headline6: TextStyle(
-            color: Colors.black54,
-            fontSize: 12.0,
+            color: Colors.white,
+            fontSize: 18.0,
             fontWeight: FontWeight.bold,
           ),
           subtitle1: TextStyle(
-            fontSize: 25,
+            fontSize: 15,
             color: Colors.black54,
             fontWeight: FontWeight.bold,
           ),

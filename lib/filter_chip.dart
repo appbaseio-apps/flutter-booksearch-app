@@ -70,7 +70,7 @@ class _FilterChipWidgetState extends State<FilterChipWidget> {
             )
           : getIcon(widget.chipType),
       label: Text(widget.chipName),
-      labelStyle: Theme.of(context).textTheme.headline6,
+      labelStyle: Theme.of(context).textTheme.headline2.copyWith(fontSize: 12),
       selected: _isSelected,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30.0),
