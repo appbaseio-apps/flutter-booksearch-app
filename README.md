@@ -21,6 +21,13 @@
 ###### Clone this repository using the link above then go to the root directory of the project and run the following commands -
 ###
 
+```
+flutter pub get
+flutter run main.dart
+```
+
+###
+
 #### Dependencies
 
 ###### This app is currently extended with the following dependencies. Instructions on how to use them in your own application are linked below.
