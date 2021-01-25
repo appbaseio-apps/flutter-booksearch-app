@@ -48,6 +48,13 @@ class _FilterChipWidgetState extends State<FilterChipWidget> {
             color: Theme.of(context).secondaryHeaderColor,
           );
         }
+      case 'search-widget':
+        {
+          return Icon(
+            Icons.auto_stories,
+            color: Theme.of(context).secondaryHeaderColor,
+          );
+        }
     }
     return null;
   }
@@ -80,7 +87,8 @@ class _FilterChipWidgetState extends State<FilterChipWidget> {
         setState(() {
           _isSelected = isSelected;
         });
-        if (widget.chipType == 'author-filter') {
+        if (widget.chipType == 'author-filter' ||
+            widget.chipType == 'search-widget') {
           widget.removeFiltersCb(widget.chipType, widget.chipValue);
         } else {
           var range = {

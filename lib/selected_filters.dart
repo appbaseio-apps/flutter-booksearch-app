@@ -61,6 +61,17 @@ class _SelectedFiltersState extends State<SelectedFilters> {
         });
       });
     }
+    if (activeWidgets['search-widget'] != null &&
+        activeWidgets['search-widget'].componentQuery['value'] != null &&
+        activeWidgets['search-widget'].componentQuery['value'].length > 0) {
+      setState(() {
+        selectedFilters.add({
+          'key': 'search-widget',
+          'value': activeWidgets['search-widget'].componentQuery['value'],
+          'data': activeWidgets['search-widget'].componentQuery['value'],
+        });
+      });
+    }
   }
 
   void setToBeRemovedFilters(String key, value) {
@@ -128,6 +139,24 @@ class _SelectedFiltersState extends State<SelectedFilters> {
           }
           break;
         }
+      case 'search-widget':
+        {
+          var itemIndex = toBeRemovedFilters.indexWhere((filter) =>
+              (filter['key'] == 'search-widget' && filter['value'] == value));
+          if (itemIndex == -1) {
+            setState(() {
+              toBeRemovedFilters.add({
+                'key': key,
+                'value': value,
+              });
+            });
+          } else {
+            setState(() {
+              toBeRemovedFilters.removeAt(itemIndex);
+            });
+          }
+          break;
+        }
     }
   }
 
@@ -146,6 +175,9 @@ class _SelectedFiltersState extends State<SelectedFilters> {
       } else if (filter['key'] == 'publication-year-filter') {
         activeWidgets['publication-year-filter'].setValue({});
         activeWidgets['publication-year-filter'].triggerCustomQuery();
+      } else {
+        activeWidgets['search-widget'].setValue('');
+        activeWidgets['search-widget'].triggerCustomQuery();
       }
     });
     setState(() {
@@ -185,7 +217,9 @@ class _SelectedFiltersState extends State<SelectedFilters> {
                                   var flag = false;
                                   toBeRemovedFilters.forEach((filter) {
                                     if (filter['key'] == element['key']) {
-                                      if (filter['key'] == 'author-filter' &&
+                                      if ((filter['key'] == 'author-filter' ||
+                                              filter['key'] ==
+                                                  'search-widget') &&
                                           filter['value'] == element['value']) {
                                         flag = true;
                                       }

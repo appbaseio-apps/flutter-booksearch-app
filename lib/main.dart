@@ -210,12 +210,12 @@ class _HomePageState extends State<HomePage> {
                         id: 'author-filter',
                         type: QueryType.term,
                         dataField: "authors.keyword",
-                        size: 5,
+                        size: 10,
                         // Initialize with default value
-                        value: List<String>(),
-                        react: {
-                          'and': ['search-widget']
-                        },
+                        value: <String>[],
+                        // react: {
+                        //   'and': ['search-widget']
+                        // },
                         builder: (context, searchWidget) {
                           // Call searchWidget's query at first time
                           if (searchWidget.query == null) {
