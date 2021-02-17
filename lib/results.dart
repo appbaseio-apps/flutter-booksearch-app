@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_searchbox/flutter_searchbox.dart';
 import 'package:searchbase/searchbase.dart';
 import 'star_display.dart';
 import 'result_card.dart';
 import 'selected_filters.dart';
 
 class ResultsWidget extends StatelessWidget {
-  final SearchWidget searchWidget;
+  final SearchController searchWidget;
 
   ResultsWidget(this.searchWidget);
   @override

@@ -5,7 +5,7 @@ import 'package:searchbase/searchbase.dart';
 typedef void SetStateCb(String id, data);
 
 class PublicationYearFilter extends StatefulWidget {
-  final SearchWidget searchWidget;
+  final SearchController searchWidget;
   final SetStateCb callback;
   final bool panelState;
   final Map panelData;

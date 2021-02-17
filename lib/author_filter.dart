@@ -36,7 +36,7 @@ class FilterHeader extends PreferredSize {
 typedef void SetStateCb(String id, data);
 
 class AuthorFilter extends StatefulWidget {
-  final SearchWidget searchWidget;
+  final SearchController searchWidget;
   final SetStateCb callback;
   final bool panelState;
   final List panelData;
