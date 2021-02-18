@@ -70,9 +70,6 @@ class _SelectedFiltersState extends State<SelectedFilters> {
         'data': activeWidgets['search-widget'].componentQuery['value'],
       });
     }
-    // print('filters ==>> $filters');
-    // print('selected filters ==>> $selectedFilters');
-    // print('equal filters ==>> ${deepEq(filters, selectedFilters)}');
     if (!deepEq(filters, selectedFilters)) {
       setState(() {
         selectedFilters = filters;
@@ -167,22 +164,22 @@ class _SelectedFiltersState extends State<SelectedFilters> {
   }
 
   void removeFilters() {
-    toBeRemovedFilters.forEach((filter) {
+    toBeRemovedFilters.forEach((filter) async {
       if (filter['key'] == 'author-filter') {
         final List<String> values = activeWidgets['author-filter'].value == null
             ? []
             : activeWidgets['author-filter'].value;
         values.remove(filter['value']);
-        activeWidgets['author-filter'].setValue(values);
+        await activeWidgets['author-filter'].setValue(values);
         activeWidgets['author-filter'].triggerCustomQuery();
       } else if (filter['key'] == 'ratings-filter') {
-        activeWidgets['ratings-filter'].setValue({});
+        await activeWidgets['ratings-filter'].setValue({});
         activeWidgets['ratings-filter'].triggerCustomQuery();
       } else if (filter['key'] == 'publication-year-filter') {
-        activeWidgets['publication-year-filter'].setValue({});
+        await activeWidgets['publication-year-filter'].setValue({});
         activeWidgets['publication-year-filter'].triggerCustomQuery();
       } else {
-        activeWidgets['search-widget'].setValue('');
+        await activeWidgets['search-widget'].setValue(null);
         activeWidgets['search-widget'].triggerCustomQuery();
       }
     });
