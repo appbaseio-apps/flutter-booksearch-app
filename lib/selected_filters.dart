@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_searchbox/flutter_searchbox.dart';
+import 'package:collection/collection.dart';
 
 import 'filter_chip.dart';
 
 class SelectedFilters extends StatefulWidget {
+  final bool filtersApplied;
+  SelectedFilters(this.filtersApplied);
+
   @override
   _SelectedFiltersState createState() => _SelectedFiltersState();
 }
@@ -20,18 +24,18 @@ class _SelectedFiltersState extends State<SelectedFilters> {
     super.initState();
   }
 
+  Function deepEq = const DeepCollectionEquality().equals;
+
   void setSelectedFilters() {
-    selectedFilters = [];
+    var filters = [];
     activeWidgets = SearchBaseProvider.of(context).getActiveWidgets();
     if (activeWidgets['author-filter'] != null &&
         activeWidgets['author-filter'].componentQuery['value'] != null) {
       activeWidgets['author-filter'].componentQuery['value'].forEach((element) {
-        setState(() {
-          selectedFilters.add({
-            'key': 'author-filter',
-            'value': element,
-            'data': element,
-          });
+        filters.add({
+          'key': 'author-filter',
+          'value': element,
+          'data': element,
         });
       });
     }
@@ -39,37 +43,39 @@ class _SelectedFiltersState extends State<SelectedFilters> {
         activeWidgets['publication-year-filter'].componentQuery['value']
                 ['start'] !=
             null) {
-      setState(() {
-        selectedFilters.add({
-          'key': 'publication-year-filter',
-          'value':
-              activeWidgets['publication-year-filter'].componentQuery['value'],
-          'data':
-              '${activeWidgets['publication-year-filter'].componentQuery['value']['start']} - ${activeWidgets['publication-year-filter'].componentQuery['value']['end']}',
-        });
+      filters.add({
+        'key': 'publication-year-filter',
+        'value':
+            activeWidgets['publication-year-filter'].componentQuery['value'],
+        'data':
+            '${activeWidgets['publication-year-filter'].componentQuery['value']['start']} - ${activeWidgets['publication-year-filter'].componentQuery['value']['end']}',
       });
     }
     if (activeWidgets['ratings-filter'] != null &&
         activeWidgets['ratings-filter'].componentQuery['value']['start'] !=
             null) {
-      setState(() {
-        selectedFilters.add({
-          'key': 'ratings-filter',
-          'value': activeWidgets['ratings-filter'].componentQuery['value'],
-          'data':
-              '${activeWidgets['ratings-filter'].componentQuery['value']['start']} - ${activeWidgets['ratings-filter'].componentQuery['value']['end']}',
-        });
+      filters.add({
+        'key': 'ratings-filter',
+        'value': activeWidgets['ratings-filter'].componentQuery['value'],
+        'data':
+            '${activeWidgets['ratings-filter'].componentQuery['value']['start']} - ${activeWidgets['ratings-filter'].componentQuery['value']['end']}',
       });
     }
     if (activeWidgets['search-widget'] != null &&
         activeWidgets['search-widget'].componentQuery['value'] != null &&
         activeWidgets['search-widget'].componentQuery['value'].length > 0) {
+      filters.add({
+        'key': 'search-widget',
+        'value': activeWidgets['search-widget'].componentQuery['value'],
+        'data': activeWidgets['search-widget'].componentQuery['value'],
+      });
+    }
+    // print('filters ==>> $filters');
+    // print('selected filters ==>> $selectedFilters');
+    // print('equal filters ==>> ${deepEq(filters, selectedFilters)}');
+    if (!deepEq(filters, selectedFilters)) {
       setState(() {
-        selectedFilters.add({
-          'key': 'search-widget',
-          'value': activeWidgets['search-widget'].componentQuery['value'],
-          'data': activeWidgets['search-widget'].componentQuery['value'],
-        });
+        selectedFilters = filters;
       });
     }
   }
@@ -186,8 +192,14 @@ class _SelectedFiltersState extends State<SelectedFilters> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void didUpdateWidget(SelectedFilters oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // print('filters applied ==>> ${widget.filtersApplied}');
     this.setSelectedFilters();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Visibility(
       visible: selectedFilters.length > 0,
       child: Container(

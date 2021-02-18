@@ -49,6 +49,7 @@ class _HomePageState extends State<HomePage> {
   var panelState = {};
   var searchWidgetState = {};
   var activeWidgets;
+  var filtersApplied;
 
   @override
   void initState() {
@@ -61,6 +62,13 @@ class _HomePageState extends State<HomePage> {
       'publication-year-filter': false,
       'publication-year-data': {},
     };
+    filtersApplied = false;
+  }
+
+  void setFiltersApplied(value) {
+    setState(() {
+      filtersApplied = value;
+    });
   }
 
   void setPanelState(id, value) {
@@ -184,7 +192,8 @@ class _HomePageState extends State<HomePage> {
               size: 10,
               triggerQueryOnInit: true,
               preserveResults: true,
-              builder: (context, searchWidget) => ResultsWidget(searchWidget)),
+              builder: (context, searchWidget) =>
+                  ResultsWidget(searchWidget, filtersApplied)),
         ),
         // A custom UI widget to render a list of authors
         drawer: Drawer(
@@ -277,7 +286,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Container(
-                child: DrawerButtons(),
+                child: DrawerButtons(setFiltersApplied),
               ),
             ],
           ),

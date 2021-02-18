@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_searchbox/flutter_searchbox.dart';
 
+typedef void SetFiltersApplied(bool value);
+
 class DrawerButtons extends StatefulWidget {
+  final SetFiltersApplied setFiltersApplied;
+  DrawerButtons(this.setFiltersApplied);
+
   @override
   _DrawerButtonsState createState() => _DrawerButtonsState();
 }
@@ -32,6 +37,7 @@ class _DrawerButtonsState extends State<DrawerButtons> {
                         style: Theme.of(context).textTheme.headline3,
                       ),
                       onPressed: () {
+                        widget.setFiltersApplied(true);
                         searchWidgetState['author-filter'].triggerCustomQuery();
                         searchWidgetState['ratings-filter']
                             .triggerCustomQuery();

@@ -6,13 +6,14 @@ import 'selected_filters.dart';
 
 class ResultsWidget extends StatelessWidget {
   final SearchController searchWidget;
+  final bool filtersApplied;
 
-  ResultsWidget(this.searchWidget);
+  ResultsWidget(this.searchWidget, this.filtersApplied);
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SelectedFilters(),
+        SelectedFilters(filtersApplied),
         Card(
           child: Align(
             alignment: Alignment.centerLeft,
