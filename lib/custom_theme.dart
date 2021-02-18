@@ -62,7 +62,7 @@ class CustomTheme {
             fontSize: 15,
           ),
           headline6: TextStyle(
-            color: Colors.white,
+            color: Colors.black54,
             fontSize: 18.0,
             fontWeight: FontWeight.bold,
           ),

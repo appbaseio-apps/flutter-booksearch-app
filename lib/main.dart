@@ -145,7 +145,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'SearchBox Demo',
+      title: 'Booksearch App',
       theme: CustomTheme().theme,
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -160,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                       context: context,
                       // SearchBox widget from flutter searchbox
                       delegate: SearchBox(
-                        // A unique identifier that can be used by other widgetss to reactively update data
+                        // A unique identifier that can be used by other widgets to reactively update data
                         id: 'search-widget',
                         enableRecentSearches: true,
                         enablePopularSuggestions: true,
@@ -174,7 +174,7 @@ class _HomePageState extends State<HomePage> {
                       ));
                 }),
           ],
-          title: Text('SearchBox Demo'),
+          title: Text('Booksearch App'),
         ),
         body: Center(
           // A custom UI widget to render a list of results

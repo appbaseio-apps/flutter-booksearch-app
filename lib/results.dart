@@ -14,14 +14,12 @@ class ResultsWidget extends StatelessWidget {
     return Column(
       children: [
         SelectedFilters(filtersApplied),
-        Card(
+        Padding(
+          padding: const EdgeInsets.fromLTRB(15, 5, 5, 5),
           child: Align(
             alignment: Alignment.centerLeft,
-            child: Container(
-              height: 20,
-              child: Text(
-                  '${searchWidget.results.numberOfResults} results found in ${searchWidget.results.time.toString()} ms'),
-            ),
+            child: Text(
+                '${searchWidget.results.numberOfResults} results found in ${searchWidget.results.time.toString()} ms'),
           ),
         ),
         Expanded(
