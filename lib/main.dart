@@ -67,6 +67,12 @@ class _HomePageState extends State<HomePage> {
     switch (id) {
       case 'author-filter':
         {
+          // Call searchWidget's query at first time
+          var authorFilterWidget = SearchBaseProvider.of(context)
+              .getActiveWidgets()['author-filter'];
+          if (authorFilterWidget.query == null) {
+            authorFilterWidget.triggerDefaultQuery();
+          }
           if (value) {
             setState(() {
               panelState['ratings-filter'] = false;
@@ -219,10 +225,6 @@ class _HomePageState extends State<HomePage> {
                         //   'and': ['search-widget']
                         // },
                         builder: (context, searchWidget) {
-                          // Call searchWidget's query at first time
-                          if (searchWidget.query == null) {
-                            searchWidget.triggerDefaultQuery();
-                          }
                           return AuthorFilter(
                               searchWidget,
                               setPanelState,
