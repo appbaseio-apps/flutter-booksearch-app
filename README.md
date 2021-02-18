@@ -18,14 +18,21 @@
 #### Develop -
 ###
 
-###### Clone this repository using the link above then go to the root directory of the project and run the following commands -
+###### Clone this repository using the link above then go to the root directory of the project and create a .env file with the following variables ( change these values according to the index used ) -
+###
+```
+INDEX=good-books-ds
+CREDENTIALS=a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61
+URL=https://arc-cluster-appbase-demo-6pjy6z.searchbase.io
+```
 ###
 
+###### and then run the following commands -
+###
 ```
 flutter pub get
 flutter run main.dart
 ```
-
 ###
 
 #### Dependencies
