@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:searchbase/searchbase.dart';
 import 'package:flutter_searchbox/flutter_searchbox.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 import 'results.dart';
 import 'author_filter.dart';
 import 'publication_year_filter.dart';
@@ -9,16 +8,15 @@ import 'ratings_filter.dart';
 import 'drawer_buttons.dart';
 import 'custom_theme.dart';
 
-Future main() async {
-  await DotEnv.load(fileName: ".env");
+void main() {
   runApp(FlutterSearchBoxApp());
 }
 
 class FlutterSearchBoxApp extends StatelessWidget {
   final SearchBase searchbase;
-  final index = DotEnv.env['INDEX'];
-  final credentials = DotEnv.env['CREDENTIALS'];
-  final url = DotEnv.env['URL'];
+  final index = 'good-books-ds';
+  final credentials = 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61';
+  final url = 'https://arc-cluster-appbase-demo-6pjy6z.searchbase.io';
 
   FlutterSearchBoxApp({Key key, this.searchbase}) : super(key: key);
 
