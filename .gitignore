@@ -16,6 +16,13 @@
 *.iws
 .idea/
 
+# Firebase related
+.firebaserc
+firebase.json
+.firebase/
+.github/workflows/firebase-hosting-merge.yml
+.github/workflows/firebase-hosting-pull-request.yml
+
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
 # is commented out by default.
@@ -34,6 +41,7 @@
 
 # Web related
 lib/generated_plugin_registrant.dart
+/web/
 
 # Symbolication related
 app.*.symbols
