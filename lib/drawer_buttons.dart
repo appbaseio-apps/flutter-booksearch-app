@@ -13,6 +13,15 @@ class DrawerButtons extends StatefulWidget {
 
 class _DrawerButtonsState extends State<DrawerButtons> {
   Map<dynamic, dynamic> searchWidgetState;
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      widget.setFiltersApplied(false);
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     searchWidgetState = SearchBaseProvider.of(context).getActiveWidgets();

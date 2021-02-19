@@ -179,21 +179,22 @@ class _HomePageState extends State<HomePage> {
         body: Center(
           // A custom UI widget to render a list of results
           child: SearchWidgetConnector(
-              id: 'result-widget',
-              dataField: 'original_title',
-              react: {
-                'and': [
-                  'search-widget',
-                  'author-filter',
-                  'publication-year-filter',
-                  'ratings-filter',
-                ],
-              },
-              size: 10,
-              triggerQueryOnInit: true,
-              preserveResults: true,
-              builder: (context, searchWidget) =>
-                  ResultsWidget(searchWidget, filtersApplied)),
+            id: 'result-widget',
+            dataField: 'original_title',
+            react: {
+              'and': [
+                'search-widget',
+                'author-filter',
+                'publication-year-filter',
+                'ratings-filter',
+              ],
+            },
+            size: 10,
+            triggerQueryOnInit: true,
+            preserveResults: true,
+            builder: (context, searchWidget) =>
+                ResultsWidget(searchWidget, filtersApplied),
+          ),
         ),
         // A custom UI widget to render a list of authors
         drawer: Drawer(

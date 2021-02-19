@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_searchbox/flutter_searchbox.dart';
 import 'package:collection/collection.dart';
-
 import 'filter_chip.dart';
 
 class SelectedFilters extends StatefulWidget {
@@ -16,11 +15,13 @@ class _SelectedFiltersState extends State<SelectedFilters> {
   List selectedFilters;
   List toBeRemovedFilters;
   Map activeWidgets;
+  List previousFilters;
 
   @override
   void initState() {
     selectedFilters = [];
     toBeRemovedFilters = [];
+    previousFilters = [];
     super.initState();
   }
 
@@ -32,34 +33,51 @@ class _SelectedFiltersState extends State<SelectedFilters> {
     if (activeWidgets['author-filter'] != null &&
         activeWidgets['author-filter'].componentQuery['value'] != null) {
       activeWidgets['author-filter'].componentQuery['value'].forEach((element) {
-        filters.add({
-          'key': 'author-filter',
-          'value': element,
-          'data': element,
-        });
+        var contains = previousFilters.where((item) =>
+            (item['key'] == 'author-filter' && item['value'] == element));
+        if (widget.filtersApplied || contains.isNotEmpty) {
+          filters.add({
+            'key': 'author-filter',
+            'value': element,
+            'data': element,
+          });
+        }
       });
     }
     if (activeWidgets['publication-year-filter'] != null &&
         activeWidgets['publication-year-filter'].componentQuery['value']
                 ['start'] !=
             null) {
-      filters.add({
-        'key': 'publication-year-filter',
-        'value':
-            activeWidgets['publication-year-filter'].componentQuery['value'],
-        'data':
-            '${activeWidgets['publication-year-filter'].componentQuery['value']['start']} - ${activeWidgets['publication-year-filter'].componentQuery['value']['end']}',
-      });
+      var contains = previousFilters.where((item) =>
+          (item['key'] == 'publication-year-filter' &&
+              item['value'] ==
+                  activeWidgets['publication-year-filter']
+                      .componentQuery['value']));
+      if (widget.filtersApplied || contains.isNotEmpty) {
+        filters.add({
+          'key': 'publication-year-filter',
+          'value':
+              activeWidgets['publication-year-filter'].componentQuery['value'],
+          'data':
+              '${activeWidgets['publication-year-filter'].componentQuery['value']['start']} - ${activeWidgets['publication-year-filter'].componentQuery['value']['end']}',
+        });
+      }
     }
     if (activeWidgets['ratings-filter'] != null &&
         activeWidgets['ratings-filter'].componentQuery['value']['start'] !=
             null) {
-      filters.add({
-        'key': 'ratings-filter',
-        'value': activeWidgets['ratings-filter'].componentQuery['value'],
-        'data':
-            '${activeWidgets['ratings-filter'].componentQuery['value']['start']} - ${activeWidgets['ratings-filter'].componentQuery['value']['end']}',
-      });
+      var contains = previousFilters.where((item) =>
+          (item['key'] == 'ratings-filter' &&
+              item['value'] ==
+                  activeWidgets['ratings-filter'].componentQuery['value']));
+      if (widget.filtersApplied || contains.isNotEmpty) {
+        filters.add({
+          'key': 'ratings-filter',
+          'value': activeWidgets['ratings-filter'].componentQuery['value'],
+          'data':
+              '${activeWidgets['ratings-filter'].componentQuery['value']['start']} - ${activeWidgets['ratings-filter'].componentQuery['value']['end']}',
+        });
+      }
     }
     if (activeWidgets['search-widget'] != null &&
         activeWidgets['search-widget'].componentQuery['value'] != null &&
@@ -70,9 +88,14 @@ class _SelectedFiltersState extends State<SelectedFilters> {
         'data': activeWidgets['search-widget'].componentQuery['value'],
       });
     }
+    // print('filters ==>> $filters');
+    // print('selected filters ==>> $selectedFilters');
+    // print('!equal filters ==>> ${!deepEq(filters, selectedFilters)}');
+    // print('filtersApplied ==>> ${widget.filtersApplied}');
     if (!deepEq(filters, selectedFilters)) {
       setState(() {
         selectedFilters = filters;
+        previousFilters = filters;
       });
     }
   }
@@ -165,20 +188,46 @@ class _SelectedFiltersState extends State<SelectedFilters> {
 
   void removeFilters() {
     toBeRemovedFilters.forEach((filter) async {
+      var updatedPreviousFilters;
       if (filter['key'] == 'author-filter') {
         final List<String> values = activeWidgets['author-filter'].value == null
             ? []
             : activeWidgets['author-filter'].value;
         values.remove(filter['value']);
+        updatedPreviousFilters = previousFilters
+            .where((item) => !(item['key'] == 'author-filter' &&
+                item['value'] == filter['value']))
+            .toList();
+        setState(() {
+          previousFilters = updatedPreviousFilters;
+        });
         await activeWidgets['author-filter'].setValue(values);
         activeWidgets['author-filter'].triggerCustomQuery();
       } else if (filter['key'] == 'ratings-filter') {
+        updatedPreviousFilters = previousFilters
+            .where((item) => !(item['key'] == 'ratings-filter'))
+            .toList();
+        setState(() {
+          previousFilters = updatedPreviousFilters;
+        });
         await activeWidgets['ratings-filter'].setValue({});
         activeWidgets['ratings-filter'].triggerCustomQuery();
       } else if (filter['key'] == 'publication-year-filter') {
+        updatedPreviousFilters = previousFilters
+            .where((item) => !(item['key'] == 'publication-year-filter'))
+            .toList();
+        setState(() {
+          previousFilters = updatedPreviousFilters;
+        });
         await activeWidgets['publication-year-filter'].setValue({});
         activeWidgets['publication-year-filter'].triggerCustomQuery();
       } else {
+        updatedPreviousFilters = previousFilters
+            .where((item) => !(item['key'] == 'search-widget'))
+            .toList();
+        setState(() {
+          previousFilters = updatedPreviousFilters;
+        });
         await activeWidgets['search-widget'].setValue(null);
         activeWidgets['search-widget'].triggerCustomQuery();
       }
