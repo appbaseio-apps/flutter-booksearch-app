@@ -45,7 +45,6 @@ flutter run main.dart
 | searchbase | [README](https://pub.dev/packages/searchbase) |
 | url_launcher | [README](https://pub.dev/packages/url_launcher) |
 | http | [README](https://pub.dev/packages/http) |
-| peanut | [README](https://pub.dev/packages/peanut) |
 | flutter_dotenv | [README](https://pub.dev/packages/flutter_dotenv) |
 
 

@@ -27,7 +27,6 @@ dependencies:
   searchbase: ^1.0.0-alpha.9
   url_launcher: ^5.4.0
   http: ^0.12.2
-  peanut: ^3.5.1
   flutter_dotenv: ^3.1.0
 
 
