@@ -8,11 +8,11 @@
 
  Suggestions             |  Author Filter            |  Publication Year Filter
 :-------------------------:|:-------------------------:|:-------------------------:
-![](https://www.dropbox.com/s/7qp3mcj7wa0h1o6/01.png?raw=1)  |  ![](https://www.dropbox.com/s/emm1to02aw99vub/02.png?raw=1)  |  ![](https://www.dropbox.com/s/z33zwoyuudhapfz/03.png?raw=1)
+![](https://www.dropbox.com/s/uvto2oucd72swha/SC2.png?raw=1)  |  ![](https://www.dropbox.com/s/emm1to02aw99vub/02.png?raw=1)  |  ![](https://www.dropbox.com/s/z33zwoyuudhapfz/03.png?raw=1)
 
  Ratings Filter             |  Selected Filters             |  Result Card
 :-------------------------:|:-------------------------:|:-------------------------:
-![](https://www.dropbox.com/s/6qu9nigcgsmaavk/04.png?raw=1)  |  ![](https://www.dropbox.com/s/q51wx8g473fmfzl/05.png?raw=1)  |  ![](https://www.dropbox.com/s/hgztcb4acx0tc63/06.png?raw=1)
+![](https://www.dropbox.com/s/6qu9nigcgsmaavk/04.png?raw=1)  |  ![](https://www.dropbox.com/s/0jgfy4qk0ys757x/SC3.png?raw=1)  |  ![](https://www.dropbox.com/s/abc2sqhguxk2704/SC1.png?raw=1)
 
 ###
 #### Develop -
