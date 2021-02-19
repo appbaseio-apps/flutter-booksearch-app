@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class Home extends StatefulWidget {
+class ResultDescription extends StatefulWidget {
   final query;
-  Home(this.query);
+  ResultDescription(this.query);
 
   @override
-  _HomeState createState() => _HomeState(this.query);
+  _ResultDescriptionState createState() => _ResultDescriptionState(this.query);
 }
 
-class _HomeState extends State<Home> {
+class _ResultDescriptionState extends State<ResultDescription> {
   final query;
   var info;
-  _HomeState(this.query);
+  _ResultDescriptionState(this.query);
 
   @override
   void initState() {
@@ -42,30 +42,21 @@ class _HomeState extends State<Home> {
               : Visibility(
                   visible: (info['Abstract'].length > 0 ||
                       info['AbstractText'].length > 0),
-                  child: SizedBox(
-                    height: 400,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Container(
-                          child: RichText(
-                            textAlign: TextAlign.justify,
-                            text: TextSpan(
-                              style: Theme.of(context).textTheme.bodyText2,
-                              children: <TextSpan>[
-                                new TextSpan(
-                                    text: 'By DuckDuckGo API: ',
-                                    style: new TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                                new TextSpan(
-                                    text: info['Abstract'].length > 0
-                                        ? info['Abstract']
-                                        : info['AbstractText']),
-                              ],
-                            ),
-                          ),
-                        ),
+                  child: Container(
+                    child: RichText(
+                      textAlign: TextAlign.justify,
+                      text: TextSpan(
+                        style: Theme.of(context).textTheme.bodyText2,
+                        children: <TextSpan>[
+                          new TextSpan(
+                              text: 'By DuckDuckGo API: ',
+                              style:
+                                  new TextStyle(fontWeight: FontWeight.bold)),
+                          new TextSpan(
+                              text: info['Abstract'].length > 0
+                                  ? info['Abstract']
+                                  : info['AbstractText']),
+                        ],
                       ),
                     ),
                   ),
